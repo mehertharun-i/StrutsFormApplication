@@ -15,14 +15,17 @@ public class RegisterAction extends ActionSupport {
 
     @Override
     public String execute() {
-        // 1. Package the form data into our Model object
-        RegisterUser newUser = new RegisterUser(username, password, email);
-        
-        // 2. Instantiate our Database Access Object
-        UserRegisterDAO dao = new UserRegisterDAO();
 
+    		UserRegisterDAO dao = new UserRegisterDAO();
+        
         try {
-            // 3. Attempt to save the user
+        	
+        		if(dao.isEmailExists(email)) {
+        			addActionError("Email is already exists.");
+        			return INPUT;
+        		}
+
+        		RegisterUser newUser = new RegisterUser(username, password, email);
             boolean isSaved = dao.userRegisterDAO(newUser);
             
             if (isSaved) {
