@@ -4,10 +4,14 @@
         "https://struts.apache.org/dtds/struts-7.0.dtd">
 
 <struts>
+
+	<constant name="struts.devMode" value="true"/>
+
     <package name="default" namespace="/" extends="struts-default">
+
         
         <action name="showRegister">
-            <result>/WEB-INF/views/register.jsp</result>
+            <result>/register.jsp</result>
         </action>
 
         <action name="register" class="com.yourcompany.registration.action.RegisterAction">
