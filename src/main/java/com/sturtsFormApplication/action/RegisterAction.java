@@ -9,7 +9,7 @@ import com.sturtsFormApplication.model.RegisterUser;
 public class RegisterAction extends ActionSupport {
 
 	// Form inputs automatically mapped by Struts
-    private String username;
+    private String fullname;
     private String password;
     private String email;
 
@@ -25,7 +25,7 @@ public class RegisterAction extends ActionSupport {
         			return INPUT;
         		}
 
-        		RegisterUser newUser = new RegisterUser(username, password, email);
+        		RegisterUser newUser = new RegisterUser(fullname, password, email);
             boolean isSaved = dao.userRegisterDAO(newUser);
             
             if (isSaved) {
@@ -42,10 +42,10 @@ public class RegisterAction extends ActionSupport {
     }
 
     // Getters and Setters required by Struts to read the JSP form
-    public String getUsername() { return username; }
+    public String getFullname() { return fullname; }
     
     @StrutsParameter
-    public void setUsername(String username) { this.username = username; }
+    public void setFullname(String fullname) { this.fullname = fullname; }
 
     public String getPassword() { return password; }
     

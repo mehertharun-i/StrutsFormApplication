@@ -2,7 +2,7 @@ package com.sturtsFormApplication.model;
 
 public class RegisterUser {
 	
-	private String username;
+	private String fullname;
 	
 	private String password;
 	
@@ -13,18 +13,18 @@ public class RegisterUser {
 		
 	}
 	
-	public RegisterUser(String username, String password, String email) {
-		this.username = username;
+	public RegisterUser(String fullname, String password, String email) {
+		this.fullname = fullname;
 		this.password = password;
 		this.email = email;
 	}
 	
-	public String getUsername() {
-		return this.username;
+	public String getFullname() {
+		return this.fullname;
 	}
 	
-	public void setUsername(String username) {
-		this.username = username;
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
 	}
 	
 	public String getPassword() {

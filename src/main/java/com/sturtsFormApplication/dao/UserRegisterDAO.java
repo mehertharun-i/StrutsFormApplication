@@ -34,7 +34,7 @@ public class UserRegisterDAO {
             // SQL command to safely create the table only if it is missing
             String createTableSQL = "CREATE TABLE IF NOT EXISTS RegisterUser ("
                     + "id INT AUTO_INCREMENT PRIMARY KEY, "
-                    + "username VARCHAR(50) NOT NULL, "
+                    + "fullname VARCHAR(50) NOT NULL, "
                     + "user_password VARCHAR(30) NOT NULL, "
                     + "email VARCHAR(100) NOT NULL"
                     + ")";
@@ -98,10 +98,10 @@ public class UserRegisterDAO {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
 			
-			String query = "INSERT INTO RegisterUser (username, user_password, email) VALUES (?, ?, ?)";
+			String query = "INSERT INTO RegisterUser (fullname, user_password, email) VALUES (?, ?, ?)";
 			
 			prst = con.prepareStatement(query);
-			prst.setString(1, registerUser.getUsername());
+			prst.setString(1, registerUser.getFullname());
 			prst.setString(2, registerUser.getPassword());
 			prst.setString(3, registerUser.getEmail());
 			
