@@ -1,8 +1,7 @@
 package com.sturtsFormApplication.action;
 
-import java.awt.event.ActionEvent;
-
 import org.apache.struts2.ActionSupport;
+import org.apache.struts2.interceptor.parameter.StrutsParameter;
 
 import com.sturtsFormApplication.dao.UserRegisterDAO;
 import com.sturtsFormApplication.model.RegisterUser;
@@ -41,12 +40,18 @@ public class RegisterAction extends ActionSupport {
 
     // Getters and Setters required by Struts to read the JSP form
     public String getUsername() { return username; }
+    
+    @StrutsParameter
     public void setUsername(String username) { this.username = username; }
 
     public String getPassword() { return password; }
+    
+    @StrutsParameter
     public void setPassword(String password) { this.password = password; }
 
     public String getEmail() { return email; }
+    
+    @StrutsParameter
     public void setEmail(String email) { this.email = email; }
 
 	
