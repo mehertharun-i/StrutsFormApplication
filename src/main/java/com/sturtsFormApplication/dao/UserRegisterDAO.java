@@ -98,12 +98,13 @@ public class UserRegisterDAO {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
 			
-			String query = "INSERT INTO RegisterUser (fullname, user_password, email) VALUES (?, ?, ?)";
+			String query = "INSERT INTO RegisterUser (fullname, user_password, email, role) VALUES (?, ?, ?, ?)";
 			
 			prst = con.prepareStatement(query);
 			prst.setString(1, registerUser.getFullname());
 			prst.setString(2, registerUser.getPassword());
 			prst.setString(3, registerUser.getEmail());
+			prst.setString(4, registerUser.getRole());
 			
 			int rowsAffected = prst.executeUpdate();
 			if(rowsAffected > 0) {

@@ -39,6 +39,7 @@
         </action>
 
         <action name="login" class="com.sturtsFormApplication.action.LoginAction">
+            <result name="admin">/WEB-INF/views/adminDashboard.jsp</result>
             <result name="success">/WEB-INF/views/success.jsp</result>
             <result name="input">/WEB-INF/views/login.jsp</result>
             <result name="error">/WEB-INF/views/login.jsp</result>
