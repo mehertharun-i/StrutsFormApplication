@@ -10,6 +10,7 @@ public class LoginAction extends ActionSupport {
 
     private String email;
     private String password;
+    private String fullname;
 
     @Override
     public String execute() {
@@ -17,9 +18,10 @@ public class LoginAction extends ActionSupport {
         
         try {
             LoginUser loginUser = new LoginUser(email, password);
-            boolean isValid = dao.validateUser(loginUser);
+            String validFullName = dao.validateUser(loginUser);
             
-            if (isValid) {
+            if (validFullName != null) {
+            	this.fullname = validFullName;
                 return SUCCESS; 
             } else {
                 addActionError("Invalid username or password.");
@@ -41,4 +43,10 @@ public class LoginAction extends ActionSupport {
     
     @StrutsParameter
     public void setPassword(String password) { this.password = password; }
+
+	public String getFullname() {
+		return fullname;
+	}
+    
 }
+

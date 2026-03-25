@@ -14,8 +14,8 @@ public class UserLoginDAO {
     private static final String DB_USERNAME = "root";
     private static final String DB_PASSWORD = "Meher@147";
 
-    public boolean validateUser(LoginUser loginUser) {
-        boolean isValid = false;
+    public String validateUser(LoginUser loginUser) {
+        String fetchedFullName = null;
         Connection con = null;
         PreparedStatement prst = null;
         ResultSet rs = null;
@@ -24,7 +24,7 @@ public class UserLoginDAO {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
             
-            String query = "SELECT id FROM RegisterUser WHERE email = ? AND user_password = ?";
+            String query = "SELECT fullname FROM RegisterUser WHERE email = ? AND user_password = ?";
             
             prst = con.prepareStatement(query);
             prst.setString(1, loginUser.getEmail());
@@ -33,7 +33,7 @@ public class UserLoginDAO {
             rs = prst.executeQuery();
             
             if (rs.next()) {
-                isValid = true;
+                fetchedFullName = rs.getString("fullname");
             }
         } catch(Exception e) {
             System.out.println("Error validating login: " + e.getMessage());
@@ -43,7 +43,7 @@ public class UserLoginDAO {
             if (con != null) try { con.close(); } catch (SQLException ignore) {}
         }
         
-        return isValid;
+        return fetchedFullName;
     }
 
 }

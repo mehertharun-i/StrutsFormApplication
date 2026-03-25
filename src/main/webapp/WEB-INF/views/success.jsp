@@ -7,7 +7,7 @@
     <title>Success</title>
 </head>
 <body>
-    <h1>Welcome <s:property value="username.contains('@') ? username.substring(0, username.indexOf('@')) : username"/>!</h1>
+    <h1>Welcome <s:property value="fullname"/>!</h1>
     <br/>
     <a href="showLogin.action">Logout</a>
 </body>
