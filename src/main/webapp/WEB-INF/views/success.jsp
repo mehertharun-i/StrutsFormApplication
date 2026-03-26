@@ -121,12 +121,17 @@
     </div>
 
     <script>
+    
+    		let messageTimeout;
+    
         function compareTexts() {
             // Get values from the textareas (Validation is now handled by HTML)
             var text1 = document.getElementById("text1").value.toLowerCase().normalize();
             var text2 = document.getElementById("text2").value.toLowerCase().normalize();
             var resultMessage = document.getElementById("resultMessage");
 
+            clearTimeout(messageTimeout);
+            
             // Compare the text and set message/color accordingly
             if (text1 === text2) {
                 resultMessage.innerText = "Both texts are the same";
@@ -135,6 +140,10 @@
                 resultMessage.innerText = "Both texts are different";
                 resultMessage.style.color = "red";
             }
+            
+            messageTimeout = setTimeout(function() {
+				resultMessage.innerText = "";
+            }, 3000);   
         }
     </script>
 </body>

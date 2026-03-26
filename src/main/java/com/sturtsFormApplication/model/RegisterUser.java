@@ -8,6 +8,7 @@ public class RegisterUser {
 	
 	private String email;
 	
+	private String role;
 	
 	public RegisterUser() {
 		
@@ -17,6 +18,7 @@ public class RegisterUser {
 		this.fullname = fullname;
 		this.password = password;
 		this.email = email;
+		this.role = "USER";
 	}
 	
 	public String getFullname() {
@@ -41,6 +43,14 @@ public class RegisterUser {
 	
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getRole() {
+		return this.role;
+	}
+	
+	public void setRole(String role) {
+		this.role = "USER";
 	}
 
 }

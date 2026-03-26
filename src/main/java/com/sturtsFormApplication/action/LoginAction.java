@@ -1,5 +1,8 @@
 package com.sturtsFormApplication.action;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.struts2.ActionSupport;
 import org.apache.struts2.interceptor.parameter.StrutsParameter;
 
@@ -11,6 +14,8 @@ public class LoginAction extends ActionSupport {
     private String email;
     private String password;
     private String fullname;
+    private String role;
+    private List<Map<String, String>> userList;
 
     @Override
     public String execute() {
@@ -18,11 +23,18 @@ public class LoginAction extends ActionSupport {
         
         try {
             LoginUser loginUser = new LoginUser(email, password);
-            String validFullName = dao.validateUser(loginUser);
+            String[] userDetails = dao.validateUser(loginUser);
             
-            if (validFullName != null) {
-            	this.fullname = validFullName;
-                return SUCCESS; 
+            if (userDetails != null) {
+            		this.fullname = userDetails[0];
+            		this.role = userDetails[1];
+            		
+            		if("ADMIN".equalsIgnoreCase(this.role)) {
+            			this.userList = dao.getAllStandardUsers();
+            			return "admin";
+            		} else {
+            			return SUCCESS; 
+            		}
             } else {
                 addActionError("Invalid username or password.");
                 return INPUT;
@@ -46,6 +58,14 @@ public class LoginAction extends ActionSupport {
 
 	public String getFullname() {
 		return fullname;
+	}
+	
+	public String getRole() {
+		return role;
+	}
+	
+	public List<Map<String, String>> getUserList() {
+	    return userList;
 	}
     
 }
