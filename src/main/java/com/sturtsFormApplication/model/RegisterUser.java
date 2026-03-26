@@ -10,7 +10,6 @@ public class RegisterUser {
 	
 	private String role;
 	
-	
 	public RegisterUser() {
 		
 	}

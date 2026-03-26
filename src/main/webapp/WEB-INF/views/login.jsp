@@ -139,7 +139,7 @@
 
     <s:form action="login" method="post">
         <s:textfield name="email" label="Email ID" required="true" type="email" title="Please enter a valid email address." />
-        <s:password name="password" label="Password" required="true" minlength="8" pattern="(?=.*\d)(?=.*[A-Z]).{8,}" title="Password must be at least 8 characters long and contain at least one uppercase letter and one number."  />
+        <s:password name="password" label="Password" required="true" minlength="8" pattern="(?=.*\d)(?=.*[A-Z]).{8,}" title="Password must be at least 8 characters long and contain at least one uppercase letter and one number." />
         <s:submit value="Login" />
     </s:form>
     
